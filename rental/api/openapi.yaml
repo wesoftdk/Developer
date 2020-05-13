@@ -102,28 +102,28 @@ paths:
           $ref: '#/components/responses/errors.Forbidden'
         403:
           $ref: '#/components/responses/errors.Unauthorized'
-    post:
-      summary: Create a property
-      tags:
-        - Properties
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Property'
-      responses:
-        201:
-          description: The property was created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Property'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
+          #    post:
+          #      summary: Create a property
+          #      tags:
+          #        - Properties
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Property'
+          #      responses:
+          #        201:
+          #          description: The property was created
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Property'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
 
   /properties/{propertyId}:
     parameters:
@@ -145,252 +145,252 @@ paths:
           $ref: '#/components/responses/errors.Unauthorized'
         404:
           $ref: '#/components/responses/errors.NotFound'
-    patch:
-      summary: Update a property
-      tags:
-        - Properties
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Property'
-      responses:
-        200:
-          description: Property has been updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Property'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
-    delete:
-      summary: Delete a property
-      tags:
-        - Properties
-      responses:
-        204:
-          description: Property was deleted
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
+          #    patch:
+          #      summary: Update a property
+          #      tags:
+          #        - Properties
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Property'
+          #      responses:
+          #        200:
+          #          description: Property has been updated
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Property'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
+          #    delete:
+          #      summary: Delete a property
+          #      tags:
+          #        - Properties
+          #      responses:
+          #        204:
+          #          description: Property was deleted
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
 
-  /properties/{propertyId}/images:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.propertyId'
-    post:
-      summary: Add an image to a property
-      tags:
-        - Properties
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              allOf:
-                - $ref: '#/components/schemas/entities.Image'
-                - type: object
-                  properties:
-                    file:
-                      type: string
-                      format: binary
-      responses:
-        201:
-          description: The image was added to the property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Image'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
+          #  /properties/{propertyId}/images:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.propertyId'
+          #    post:
+          #      summary: Add an image to a property
+          #      tags:
+          #        - Properties
+          #      requestBody:
+          #        content:
+          #          multipart/form-data:
+          #            schema:
+          #              allOf:
+          #                - $ref: '#/components/schemas/entities.Image'
+          #                - type: object
+          #                  properties:
+          #                    file:
+          #                      type: string
+          #                      format: binary
+          #      responses:
+          #        201:
+          #          description: The image was added to the property
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Image'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
 
-  /properties/{propertyId}/images/{imageId}:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.propertyId'
-      - $ref: '#/components/parameters/identifiers.imageId'
-    patch:
-      summary: Update a property's image
-      tags:
-        - Properties
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Image'
-      responses:
-        200:
-          description: Image was updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Image'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
-    delete:
-      tags:
-        - Properties
-      responses:
-        204:
-          description: Image was removed from the property
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
+          #  /properties/{propertyId}/images/{imageId}:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.propertyId'
+          #      - $ref: '#/components/parameters/identifiers.imageId'
+          #    patch:
+          #      summary: Update a property's image
+          #      tags:
+          #        - Properties
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Image'
+          #      responses:
+          #        200:
+          #          description: Image was updated
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Image'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
+          #    delete:
+          #      tags:
+          #        - Properties
+          #      responses:
+          #        204:
+          #          description: Image was removed from the property
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
 
-  /properties/{propertyId}/contacts:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.propertyId'
-    post:
-      summary: Add a contact to a property
-      tags:
-        - Properties
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Contact'
-      responses:
-        201:
-          description: The contact was added to the property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Contact'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
+          #  /properties/{propertyId}/contacts:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.propertyId'
+          #    post:
+          #      summary: Add a contact to a property
+          #      tags:
+          #        - Properties
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Contact'
+          #      responses:
+          #        201:
+          #          description: The contact was added to the property
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Contact'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
 
-  /properties/{propertyId}/contacts/{contactId}:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.propertyId'
-      - $ref: '#/components/parameters/identifiers.contactId'
-    patch:
-      summary: Update a property's contact
-      tags:
-        - Properties
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Contact'
-      responses:
-        200:
-          description: Contact was updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Contact'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
-    delete:
-      summary: Delete a property's contact
-      tags:
-        - Properties
-      responses:
-        204:
-          description: Contact was removed from the property
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
+          #  /properties/{propertyId}/contacts/{contactId}:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.propertyId'
+          #      - $ref: '#/components/parameters/identifiers.contactId'
+          #    patch:
+          #      summary: Update a property's contact
+          #      tags:
+          #        - Properties
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Contact'
+          #      responses:
+          #        200:
+          #          description: Contact was updated
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Contact'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
+          #    delete:
+          #      summary: Delete a property's contact
+          #      tags:
+          #        - Properties
+          #      responses:
+          #        204:
+          #          description: Contact was removed from the property
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
 
-  /properties/{propertyId}/attributes:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.propertyId'
-    post:
-      summary: Add an attribute to a property
-      tags:
-        - Properties
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Attribute'
-      responses:
-        201:
-          description: The attribute was added to the property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Attribute'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
+          #  /properties/{propertyId}/attributes:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.propertyId'
+          #    post:
+          #      summary: Add an attribute to a property
+          #      tags:
+          #        - Properties
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Attribute'
+          #      responses:
+          #        201:
+          #          description: The attribute was added to the property
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Attribute'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
 
-  /properties/{propertyId}/attributes/{attributeDefinitionId}:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.propertyId'
-      - $ref: '#/components/parameters/identifiers.attributeDefinitionId'
-    patch:
-      summary: Update a property's attribute
-      tags:
-        - Properties
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Attribute'
-      responses:
-        200:
-          description: Property was updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Attribute'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
-    delete:
-      summary: Remove a property's attribute
-      tags:
-        - Properties
-      responses:
-        204:
-          description: Attribute was removed from the property
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
+          #  /properties/{propertyId}/attributes/{attributeDefinitionId}:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.propertyId'
+          #      - $ref: '#/components/parameters/identifiers.attributeDefinitionId'
+          #    patch:
+          #      summary: Update a property's attribute
+          #      tags:
+          #        - Properties
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Attribute'
+          #      responses:
+          #        200:
+          #          description: Property was updated
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Attribute'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
+          #    delete:
+          #      summary: Remove a property's attribute
+          #      tags:
+          #        - Properties
+          #      responses:
+          #        204:
+          #          description: Attribute was removed from the property
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
 
   /tenancies:
     get:
@@ -422,28 +422,28 @@ paths:
           $ref: '#/components/responses/errors.Forbidden'
         403:
           $ref: '#/components/responses/errors.Unauthorized'
-    post:
-      summary: Create a tenancy
-      tags:
-        - Tenancies
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Tenancy'
-      responses:
-        201:
-          description: The tenancy was created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Tenancy'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
+          #    post:
+          #      summary: Create a tenancy
+          #      tags:
+          #        - Tenancies
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Tenancy'
+          #      responses:
+          #        201:
+          #          description: The tenancy was created
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Tenancy'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
 
   /tenancies/{tenancyId}:
     parameters:
@@ -465,44 +465,44 @@ paths:
           $ref: '#/components/responses/errors.Unauthorized'
         404:
           $ref: '#/components/responses/errors.NotFound'
-    patch:
-      summary: Update a tenancy
-      tags:
-        - Tenancies
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Tenancy'
-      responses:
-        200:
-          description: Tenancy has been updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Tenancy'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
-    delete:
-      summary: Delete a tenancy
-      tags:
-        - Tenancies
-      responses:
-        204:
-          description: Property was deleted
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
-      
+          #    patch:
+          #      summary: Update a tenancy
+          #      tags:
+          #        - Tenancies
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Tenancy'
+          #      responses:
+          #        200:
+          #          description: Tenancy has been updated
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Tenancy'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
+          #    delete:
+          #      summary: Delete a tenancy
+          #      tags:
+          #        - Tenancies
+          #      responses:
+          #        204:
+          #          description: Property was deleted
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
+          #      
 
   /tenancies/{tenancyId}/cases:
     parameters:
@@ -526,217 +526,215 @@ paths:
         403:
           $ref: '#/components/responses/errors.Unauthorized'
       
-  /tenancies/{tenancyId}/images:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.tenancyId'
-    post:
-      summary: Add an image to a tenancy
-      tags:
-        - Tenancies
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              allOf:
-                - $ref: '#/components/schemas/entities.Image'
-                - type: object
-                  properties:
-                    file:
-                      type: string
-                      format: binary
-      responses:
-        201:
-          description: The image was added to the property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Image'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
+          #  /tenancies/{tenancyId}/images:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.tenancyId'
+          #    post:
+          #      summary: Add an image to a tenancy
+          #      tags:
+          #        - Tenancies
+          #      requestBody:
+          #        content:
+          #          multipart/form-data:
+          #            schema:
+          #              allOf:
+          #                - $ref: '#/components/schemas/entities.Image'
+          #                - type: object
+          #                  properties:
+          #                    file:
+          #                      type: string
+          #                      format: binary
+          #      responses:
+          #        201:
+          #          description: The image was added to the property
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Image'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
 
+          #  /tenancies/{tenancyId}/images/{imageId}:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.tenancyId'
+          #      - $ref: '#/components/parameters/identifiers.imageId'
+          #    patch:
+          #      summary: Update a tenancy's image
+          #      tags:
+          #        - Tenancies
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Image'
+          #      responses:
+          #        200:
+          #          description: Image was updated
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Image'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
+          #    delete:
+          #      summary: Remove a tenancy's image
+          #      tags:
+          #        - Tenancies
+          #      responses:
+          #        204:
+          #          description: Image was removed from the tenancy
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
 
+          #  /tenancies/{tenancyId}/contacts:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.tenancyId'
+          #    post:
+          #      summary: Add a contact to a tenancy
+          #      tags:
+          #        - Tenancies
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Contact'
+          #      responses:
+          #        201:
+          #          description: The contact was added to the tenancy
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Contact'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
 
-  /tenancies/{tenancyId}/images/{imageId}:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.tenancyId'
-      - $ref: '#/components/parameters/identifiers.imageId'
-    patch:
-      summary: Update a tenancy's image
-      tags:
-        - Tenancies
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Image'
-      responses:
-        200:
-          description: Image was updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Image'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
-    delete:
-      summary: Remove a tenancy's image
-      tags:
-        - Tenancies
-      responses:
-        204:
-          description: Image was removed from the tenancy
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
+          #  /tenancies/{tenancyId}/contacts/{contactId}:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.tenancyId'
+          #      - $ref: '#/components/parameters/identifiers.contactId'
+          #    patch:
+          #      summary: Update a tenancy's contact
+          #      tags:
+          #        - Tenancies
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Contact'
+          #      responses:
+          #        200:
+          #          description: Contact was updated
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Contact'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
+          #    delete:
+          #      summary: Delete a tenancy's contact
+          #      tags:
+          #        - Tenancies
+          #      responses:
+          #        204:
+          #          description: Contact was removed from the tenancy
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
 
-  /tenancies/{tenancyId}/contacts:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.tenancyId'
-    post:
-      summary: Add a contact to a tenancy
-      tags:
-        - Tenancies
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Contact'
-      responses:
-        201:
-          description: The contact was added to the tenancy
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Contact'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
+          #  /tenancies/{tenancyId}/attributes:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.tenancyId'
+          #    post:
+          #      summary: Add an attribute to a tenancy
+          #      tags:
+          #        - Tenancies
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Attribute'
+          #      responses:
+          #        201:
+          #          description: The attribute was added to the tenancy
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Attribute'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
 
-  /tenancies/{tenancyId}/contacts/{contactId}:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.tenancyId'
-      - $ref: '#/components/parameters/identifiers.contactId'
-    patch:
-      summary: Update a tenancy's contact
-      tags:
-        - Tenancies
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Contact'
-      responses:
-        200:
-          description: Contact was updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Contact'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
-    delete:
-      summary: Delete a tenancy's contact
-      tags:
-        - Tenancies
-      responses:
-        204:
-          description: Contact was removed from the tenancy
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
-
-  /tenancies/{tenancyId}/attributes:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.tenancyId'
-    post:
-      summary: Add an attribute to a tenancy
-      tags:
-        - Tenancies
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Attribute'
-      responses:
-        201:
-          description: The attribute was added to the tenancy
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Attribute'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-
-  /tenancies/{tenancyId}/attributes/{attributeDefinitionId}:
-    parameters:
-      - $ref: '#/components/parameters/identifiers.tenancyId'
-      - $ref: '#/components/parameters/identifiers.attributeDefinitionId'
-    patch:
-      summary: Update a tenancy's attribute
-      tags:
-        - Tenancies
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/entities.Attribute'
-      responses:
-        200:
-          description: Property was updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/entities.Attribute'
-        400:
-          $ref: '#/components/responses/errors.BadRequest'
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
-    delete:
-      summary: Remove a tenancy's attribute
-      tags:
-        - Tenancies
-      responses:
-        204:
-          description: Attribute was removed from the tenancy
-        401:
-          $ref: '#/components/responses/errors.Forbidden'
-        403:
-          $ref: '#/components/responses/errors.Unauthorized'
-        404:
-          $ref: '#/components/responses/errors.NotFound'
+          #  /tenancies/{tenancyId}/attributes/{attributeDefinitionId}:
+          #    parameters:
+          #      - $ref: '#/components/parameters/identifiers.tenancyId'
+          #      - $ref: '#/components/parameters/identifiers.attributeDefinitionId'
+          #    patch:
+          #      summary: Update a tenancy's attribute
+          #      tags:
+          #        - Tenancies
+          #      requestBody:
+          #        content:
+          #          application/json:
+          #            schema:
+          #              $ref: '#/components/schemas/entities.Attribute'
+          #      responses:
+          #        200:
+          #          description: Property was updated
+          #          content:
+          #            application/json:
+          #              schema:
+          #                $ref: '#/components/schemas/entities.Attribute'
+          #        400:
+          #          $ref: '#/components/responses/errors.BadRequest'
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
+          #    delete:
+          #      summary: Remove a tenancy's attribute
+          #      tags:
+          #        - Tenancies
+          #      responses:
+          #        204:
+          #          description: Attribute was removed from the tenancy
+          #        401:
+          #          $ref: '#/components/responses/errors.Forbidden'
+          #        403:
+          #          $ref: '#/components/responses/errors.Unauthorized'
+          #        404:
+          #          $ref: '#/components/responses/errors.NotFound'
 
   /cases:
     get:
@@ -1109,87 +1107,6 @@ paths:
 
     
 
-#    post:
-#      summary: Create an attribute type
-#      tags:
-#        - Marketing
-#      requestBody:
-#        content:
-#          application/json:
-#            schema:
-#              $ref: '#/components/schemas/entities.AttributeDefinition'
-#      responses:
-#        201:
-#          description: The attribute type was created
-#          content:
-#            application/json:
-#              schema:
-#                $ref: '#/components/schemas/entities.AttributeDefinition'
-#        400:
-#          $ref: '#/components/responses/errors.BadRequest'
-#        401:
-#          $ref: '#/components/responses/errors.Forbidden'
-#        403:
-#          $ref: '#/components/responses/errors.Unauthorized'
-
-#  /attribute-types/{attributeTypeId}:
-#    summary: An attribute type
-#    parameters:
-#      - $ref: '#/components/parameters/identifiers.attributeTypeId'
-#    get:
-#      summary: Get an attribute type
-#      tags:
-#        - Marketing
-#      responses:
-#        200:
-#          description: Attribute type was found
-#          content:
-#            application/json:
-#              schema:
-#                $ref: '#/components/schemas/entities.AttributeDefinition'
-#        401:
-#          $ref: '#/components/responses/errors.Forbidden'
-#        403:
-#          $ref: '#/components/responses/errors.Unauthorized'
-#        404:
-#          $ref: '#/components/responses/errors.NotFound'
-#    patch:
-#      summary: Update an attribute type
-#      tags:
-#        - Marketing
-#      requestBody:
-#        content:
-#          application/json:
-#            schema:
-#              $ref: '#/components/schemas/entities.AttributeDefinition'
-#      responses:
-#        200:
-#          description: Attribute type has been updated
-#          content:
-#            application/json:
-#              schema:
-#                $ref: '#/components/schemas/entities.AttributeDefinition'
-#        400:
-#          $ref: '#/components/responses/errors.BadRequest'
-#        401:
-#          $ref: '#/components/responses/errors.Forbidden'
-#        403:
-#          $ref: '#/components/responses/errors.Unauthorized'
-#        404:
-#          $ref: '#/components/responses/errors.NotFound'
-#    delete:
-#      summary: Delete an attribute type
-#      tags:
-#        - Marketing
-#      responses:
-#        204:
-#          description: Attribute type was deleted
-#        401:
-#          $ref: '#/components/responses/errors.Forbidden'
-#        403:
-#          $ref: '#/components/responses/errors.Unauthorized'
-#        404:
-#          $ref: '#/components/responses/errors.NotFound'
 
 components:
   parameters:
